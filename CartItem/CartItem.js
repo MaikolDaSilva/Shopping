@@ -23,6 +23,9 @@ module.exports = class CartItem {
         if (quantity < 1){
             throw new InvalidQuantityException();
         }
+        if (price < 10){
+            throw new InvalidPriceException();
+        }
         if (currency.length !== 3) {
             throw new InvalidCurrencyException();
         }
