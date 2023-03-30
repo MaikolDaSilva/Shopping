@@ -11,44 +11,51 @@ module.exports = class CartItem {
     #name;
     #quantity;
     #price;
-    #currency;
     //endregion private attributes
 
     //region public methods
     constructor(articleId, name, quantity, price) {
-        throw new Error();
+        if(articleId < 1){
+            throw new InvalidArticleIdException();
+        }
+        this.#articleId = articleId;
+        this.quantity = quantity;
+        this.price = price;
+        this.#name = name;
     }
 
     get articleId() {
-        throw new Error();
+        return this.#articleId;
     }
 
     get name() {
-        throw new Error();
+        return this.#name;
     }
 
     get quantity() {
-        throw new Error();
+        return this.#quantity;
     }
 
     set quantity(value) {
-        throw new Error();
+        if(value < 1){
+            throw new InvalidQuantityException();
+        }
+        this.#quantity = value;
     }
 
     get price() {
-        throw new Error();
+        return this.#price
     }
 
     set price(value) {
-        throw new Error();
-    }
-
-    get currency(){
-        throw new Error();
+        if(value < 10){
+            throw new InvalidPriceException();
+        }
+        this.#price = value;
     }
 
     get total() {
-        throw new Error();
+        return this.#price * this.#quantity;
     }
     //endregion public methods
 
