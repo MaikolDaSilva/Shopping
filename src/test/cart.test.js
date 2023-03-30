@@ -122,6 +122,17 @@ test('count_EmptyCart_ThrowException', () => {
     expect(() => cart.count()).toThrow(EmptyCartException);
 })
 
+test('count_EmptyCart_Distinct_ThrowException', () => {
+    //given
+    let cart = new Cart(null);
+
+    //when
+    //Event triggered by th assertion
+
+    //then
+    expect(() => cart.count(true)).toThrow(EmptyCartException);
+})
+
 test('add_EmptyCartAddFirstSingleCartItem_GetsUpdatedNumberOfItems', () => {
     //given
     let cart = new Cart(null);
