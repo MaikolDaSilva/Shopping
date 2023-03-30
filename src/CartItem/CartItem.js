@@ -18,10 +18,10 @@ module.exports = class CartItem {
 
     //region public methods
     constructor(articleId, name, quantity, price, currency = "CHF") {
-        if (articleId < 1){
-            throw  new  InvalidArticleIdException();
+        if (articleId < 1) {
+            throw  new InvalidArticleIdException();
         }
-        if (name.length > 20 || name.length < 3){
+        if (name.length > 20 || name.length < 3) {
             throw new InvalidNameException();
         }
         if (currency.length !== 3) {
@@ -47,13 +47,15 @@ module.exports = class CartItem {
     }
 
     set quantity(value) {
-        if (value < 1){
+
+        if(value < 1){
             throw new InvalidQuantityException();
         }
         this.#quantity = value;
     }
 
     get price() {
+
         return this.#price;
     }
 
@@ -70,6 +72,7 @@ module.exports = class CartItem {
 
     get total() {
         return this.#quantity * this.#price;
+
     }
     //endregion public methods
 
